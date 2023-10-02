@@ -1,2 +1,2 @@
 # web_cookie
-Ideally client web-cookie management code, using Typescript.
+Ideally Implemented simple web client-cookie source code, and using Typescript.
