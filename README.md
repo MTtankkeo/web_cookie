@@ -3,7 +3,7 @@ Ideally Implemented simple web client-cookie source code, and using Typescript.
 
 ## Usage
 
-### Get Cookie Object
+### Get instance of cookie object
 ```ts
 // Not Null-Safety
 const theme = Cookie.getObjectByKey<string>("theme");
