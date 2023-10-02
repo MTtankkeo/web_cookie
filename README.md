@@ -3,19 +3,17 @@ Ideally Implemented simple web client-cookie source code, and using Typescript.
 
 ## Usage
 
-### Not Null-Safety
+### Get Cookie Object
 ```ts
-// Returned value is nullable.
+// Not Null-Safety
 const theme = Cookie.getObjectByKey<string>("theme");
 ```
 
-### Null-Safety
 ```ts
-// Returned value is not nullable.
+// Null-Safety
 const theme = Cookie.getObjectByKeyWithNullSafe<string>("theme", "device");
 ```
 
-### All Objects
 ```ts
 const cookies: CookieObject<any>[] = Cookie.objects;
 ```
