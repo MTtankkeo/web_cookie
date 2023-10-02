@@ -42,7 +42,7 @@ export class Cookie {
         return this.objects.some(e => e.key == object.key);
     }
 
-    static addObject(object: CookieObject<any>) {
+    protected static addObject(object: CookieObject<any>) {
         this.update([...this.objects, object]);
     }
 
