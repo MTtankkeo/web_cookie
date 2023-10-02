@@ -30,12 +30,8 @@ export class Cookie {
 
     static getObjectByKeyWithNullSafe<T>(key: string, defaultValue: T): CookieObject<T> {
         const object = this.getObjectByKey<T>(key);
-
-        if (object == null) {
-            return new CookieObject(key, defaultValue);
-        }
-
-        return object;
+        
+        return object ?? new CookieObject(key, defaultValue);
     }
 
     static contains(object: CookieObject<any>): boolean {

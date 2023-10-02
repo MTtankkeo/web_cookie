@@ -20,10 +20,7 @@ export class Cookie {
     }
     static getObjectByKeyWithNullSafe(key, defaultValue) {
         const object = this.getObjectByKey(key);
-        if (object == null) {
-            return new CookieObject(key, defaultValue);
-        }
-        return object;
+        return object !== null && object !== void 0 ? object : new CookieObject(key, defaultValue);
     }
     static contains(object) {
         return this.objects.some(e => e.key == object.key);
