@@ -10,7 +10,7 @@ const theme = Cookie.getObjectByKey("theme");
 ```
 
 ### Null-Safety
-```
+```ts
 // Returned value is not nullable.
 const theme = Cookie.getObjectByKeyWithNullSafe("theme", "device");
 ```
