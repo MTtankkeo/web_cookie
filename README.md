@@ -1,4 +1,4 @@
-# web_cookie
+# Web Cookie
 Ideally Implemented simple web client-cookie source code, and using Typescript.
 
 ## Usage
