@@ -1,2 +1,2 @@
 # web_cookie
-Client web-cookie management code, ideally using Typescript.
+Ideally client web-cookie management code, using Typescript.
