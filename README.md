@@ -1,6 +1,8 @@
 # Web Cookie
 Ideally Implemented simple web client-cookie source code, and using Typescript.
 
+> The example doesn't work in the local environment.
+
 ## Usage
 
 ### Get instance of cookie object
