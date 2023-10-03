@@ -8,7 +8,7 @@ export class Cookie {
     static get objects() {
         const cookies = this.split(document.cookie);
         
-        return cookies.map(e => CookieObject.toInstanceByRaw(e));
+        return cookies.map(e => CookieObject.createInstanceByRaw(e));
     }
     
     // Converts the given raw cookies data format to a referenceable
@@ -90,7 +90,7 @@ export class CookieObject<T> {
     }
 
     // Returns the new instance that matches the given ancient cookie data format.
-    static toInstanceByRaw(text: string): CookieObject<any> {
+    static createInstanceByRaw(text: string): CookieObject<any> {
         const [key, value] = text.split('=');
 
         return new CookieObject(key, value);

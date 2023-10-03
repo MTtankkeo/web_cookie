@@ -3,7 +3,7 @@ export class Cookie {
     // Returnes currently array of cookie objects.
     static get objects() {
         const cookies = this.split(document.cookie);
-        return cookies.map(e => CookieObject.toInstanceByRaw(e));
+        return cookies.map(e => CookieObject.createInstanceByRaw(e));
     }
     // Converts the given raw cookies data format to a referenceable
     // cookie-object and returns it to an array.
@@ -65,7 +65,7 @@ export class CookieObject {
         return `${this.key}=${this.value}`;
     }
     // Returns the new instance that matches the given ancient cookie data format.
-    static toInstanceByRaw(text) {
+    static createInstanceByRaw(text) {
         const [key, value] = text.split('=');
         return new CookieObject(key, value);
     }
