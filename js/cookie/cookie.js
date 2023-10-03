@@ -16,12 +16,6 @@ export class Cookie {
         }
         return text.split("; ");
     }
-    // Convert the given referenceable cookie-objects into raw cookies data format
-    // and permanently store them in your browser.
-    //
-    static update(objects) {
-        document.cookie = objects.map(e => e.toString()).join('; ');
-    }
     // Returns the referable object that matches the given key.
     static getObjectByKey(key) {
         return this.objects.find((e) => e.key == key);
@@ -37,10 +31,27 @@ export class Cookie {
     static contains(object) {
         return this.objects.some(e => e.key == object.key);
     }
-    static setObject(object) {
-        document.cookie = object.toString();
+    static setObject(newObject) {
+        const oldObject = this.getObjectByKey(newObject.key);
+        document.cookie = newObject.toString();
+        if (oldObject != null && oldObject.value != newObject.value) {
+            this.notifyListeners(newObject);
+        }
+    }
+    static addListener(listener) {
+        if (this.listeners.some((e) => e.listener == listener.listener)) {
+            throw "This listener is already attached.";
+        }
+        this.listeners.push(listener);
+    }
+    static notifyListeners(object) {
+        for (const listener of this.listeners) {
+            if (listener.key == object.key)
+                listener.listener(object.value);
+        }
     }
 }
+Cookie.listeners = [];
 // A class is referenceable cookie object.
 export class CookieObject {
     constructor(key, value) {
@@ -52,6 +63,9 @@ export class CookieObject {
     }
     toString() {
         return `${this.key}=${this.value}`;
+    }
+    addListener(listener) {
+        Cookie.addListener({ key: this.key, listener: listener });
     }
     // Returns the new instance that matches the given ancient cookie data format.
     static createInstanceByRaw(text) {

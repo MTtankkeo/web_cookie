@@ -1,0 +1,17 @@
+
+
+
+
+* {
+    margin: 0px;
+}
+
+body {
+    margin: 15px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+h1, h2, h3, h4, h5, h6, span, p, a {
+    color: var(--text-color);
+}

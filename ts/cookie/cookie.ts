@@ -1,8 +1,19 @@
 
 
 
+type CookieListener<T> = {
+    key: string,
+    listener: RawCookieListener<T>,
+}
+
+type RawCookieListener<T> = (value: T) => void
+
+
+
 // A static class manage cookies in client web.
 export class Cookie {
+
+    static listeners: CookieListener<any>[] = [];
 
     // Returnes currently array of cookie objects.
     static get objects() {
@@ -22,13 +33,6 @@ export class Cookie {
         }
         
         return text.split("; ");
-    }
-
-    // Convert the given referenceable cookie-objects into raw cookies data format
-    // and permanently store them in your browser.
-    //
-    static update(objects: CookieObject<any>[]): void {
-        document.cookie = objects.map(e => e.toString()).join('; ');
     }
     
     // Returns the referable object that matches the given key.
@@ -50,8 +54,28 @@ export class Cookie {
         return this.objects.some(e => e.key == object.key);
     }
     
-    static setObject(object: CookieObject<any>) {
-        document.cookie = object.toString();
+    static setObject(newObject: CookieObject<any>) {
+        const oldObject = this.getObjectByKey(newObject.key);
+        
+        document.cookie = newObject.toString();
+
+        if (oldObject != null && oldObject.value != newObject.value) {
+            this.notifyListeners(newObject);
+        }
+    }
+
+    static addListener<T>(listener: CookieListener<T>) {
+        if (this.listeners.some((e) => e.listener == listener.listener)) {
+            throw "This listener is already attached.";
+        }
+
+        this.listeners.push(listener);
+    }
+
+    static notifyListeners(object: CookieObject<any>) {
+        for (const listener of this.listeners) {
+            if (listener.key == object.key) listener.listener(object.value);
+        }
     }
 }
 
@@ -74,6 +98,10 @@ export class CookieObject<T> {
 
     toString(): string {
         return `${this.key}=${this.value}`;
+    }
+
+    addListener(listener: RawCookieListener<T>) {
+        Cookie.addListener({ key: this.key, listener: listener });
     }
 
     // Returns the new instance that matches the given ancient cookie data format.
