@@ -38,7 +38,7 @@ export class Cookie {
         return this.objects.some(e => e.key == object.key);
     }
     static addObject(object) {
-        this.update([...this.objects, object]);
+        document.cookie = object.toString();
     }
     static setObject(newObject) {
         const objects = this.objects;

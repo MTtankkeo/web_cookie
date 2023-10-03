@@ -51,7 +51,7 @@ export class Cookie {
     }
     
     protected static addObject(object: CookieObject<any>) {
-        this.update([...this.objects, object]);
+        document.cookie = object.toString();
     }
 
     static setObject(newObject: CookieObject<any>): void {
