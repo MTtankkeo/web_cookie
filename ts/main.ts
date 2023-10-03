@@ -24,5 +24,7 @@ addEventListener("DOMContentLoaded", () => {
     const [body] = document.getElementsByTagName("body");
     body.className = Theme.get(theme.value);
 
-    theme.addListener(value => body.className = Theme.get(value));
+    theme.addListener(value => {
+        body.className = Theme.get(value);
+    });
 });
