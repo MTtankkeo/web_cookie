@@ -32,6 +32,7 @@ theme.setValue("device");
 ```
 
 ## Listener
+The following describes how to register a callback function that is called whenever the value of a cookie object updates.
 
 ### globally register listener
 ```ts
