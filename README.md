@@ -4,7 +4,7 @@ Ideally Implemented simple web client-cookie source code, and using Typescript.
 ## Usage
 
 ### Get instance of cookie object
-The following describes how to get a cookie object.
+The following describes how to get a instance of cookie object.
 
 ```ts
 // Not Null-Safety
