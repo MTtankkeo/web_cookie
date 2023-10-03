@@ -57,7 +57,7 @@ export class Cookie {
     static setObject(newObject: CookieObject<any>): void {
         const objects = this.objects;
         const existingObject = objects.find((e) => e.key == newObject.key);
-        
+
         if (existingObject != null) {
             existingObject.value = newObject.value;
     
