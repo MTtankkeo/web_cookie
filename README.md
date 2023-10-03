@@ -23,10 +23,10 @@ The following describes how to define a value of web cookie object.
 
 ```ts
 // Useing setter
-cookie.value = "value";
+theme.value = "device";
 
 // Useing function.
-cookie.setValue("value");
+theme.setValue("device");
 ```
 
 ## Listener
