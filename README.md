@@ -19,7 +19,7 @@ const cookies: CookieObject<any>[] = Cookie.objects;
 ```
 
 ## Set value of cookie object
-The following describes how to define a json web cookie object.
+The following describes how to define a value of web cookie object.
 
 ```ts
 // Useing setter
