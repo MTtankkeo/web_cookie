@@ -37,19 +37,8 @@ export class Cookie {
     static contains(object) {
         return this.objects.some(e => e.key == object.key);
     }
-    static addObject(object) {
+    static setObject(object) {
         document.cookie = object.toString();
-    }
-    static setObject(newObject) {
-        const objects = this.objects;
-        const existingObject = objects.find((e) => e.key == newObject.key);
-        if (existingObject != null) {
-            existingObject.value = newObject.value;
-            this.update(objects);
-        }
-        else {
-            this.addObject(newObject);
-        }
     }
 }
 // A class is referenceable cookie object.

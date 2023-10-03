@@ -50,21 +50,8 @@ export class Cookie {
         return this.objects.some(e => e.key == object.key);
     }
     
-    protected static addObject(object: CookieObject<any>) {
+    static setObject(object: CookieObject<any>) {
         document.cookie = object.toString();
-    }
-
-    static setObject(newObject: CookieObject<any>): void {
-        const objects = this.objects;
-        const existingObject = objects.find((e) => e.key == newObject.key);
-
-        if (existingObject != null) {
-            existingObject.value = newObject.value;
-    
-            this.update(objects);
-        } else {
-            this.addObject(newObject);
-        }
     }
 }
 
