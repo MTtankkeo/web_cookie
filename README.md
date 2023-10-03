@@ -27,7 +27,7 @@ Cookie.addListener<string>({
       listener(value: string) {
           console.log(`Update to ${value}`);
       },
-  })
+})
 ```
 
 ### Register listener by instance
