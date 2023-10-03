@@ -38,6 +38,7 @@ export class Cookie {
 
     // Returns the referable object that matches the given key.
     // has a default value for the situation of no given key.
+    //
     static getObjectByKeyWithNullSafe<T>(key: string, defaultValue: T): CookieObject<T> {
         const object = this.getObjectByKey<T>(key);
         
@@ -74,7 +75,10 @@ export class CookieObject<T> {
         this.value = value;
     }
 
+    // A unique identifier of cookie.
     key: string;
+
+    // A value of cookie object.
     value: T;
     
     setValue(newValue: T): void {

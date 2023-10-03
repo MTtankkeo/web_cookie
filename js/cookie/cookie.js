@@ -28,6 +28,7 @@ export class Cookie {
     }
     // Returns the referable object that matches the given key.
     // has a default value for the situation of no given key.
+    //
     static getObjectByKeyWithNullSafe(key, defaultValue) {
         const object = this.getObjectByKey(key);
         return object !== null && object !== void 0 ? object : new CookieObject(key, defaultValue);
