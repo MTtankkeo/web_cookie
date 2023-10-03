@@ -18,6 +18,17 @@ const theme = Cookie.getObjectByKeyWithNullSafe<string>("theme", "device");
 const cookies: CookieObject<any>[] = Cookie.objects;
 ```
 
+## Set value of cookie object
+The following describes how to define a json web cookie object.
+
+```
+// Useing setter
+cookie.value = "value";
+
+// Useing function.
+cookie.setValue("value");
+```
+
 ## Listener
 
 ### globally register listener
