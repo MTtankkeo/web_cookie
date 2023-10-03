@@ -24,6 +24,13 @@ addEventListener("DOMContentLoaded", () => {
     const [body] = document.getElementsByTagName("body");
     body.className = Theme.get(theme.value);
 
+    Cookie.addListener<string>({
+        key: "theme",
+        listener(value: string) {
+            console.log(`Update to ${value}`);
+        },
+    })
+
     theme.addListener(value => {
         body.className = Theme.get(value);
     });

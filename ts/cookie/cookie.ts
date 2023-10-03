@@ -83,14 +83,20 @@ export class Cookie {
 export class CookieObject<T> {
     constructor(key: string, value: T) {
         this.key = key;
-        this.value = value;
+        this._value = value;
     }
 
     // A unique identifier of cookie.
     key: string;
 
     // A value of cookie object.
-    value: T;
+    protected _value: T;
+
+    get value(): T { return this._value; }
+    
+    set value(newValue: T) {
+        this.setValue(newValue);
+    }
     
     setValue(newValue: T): void {
         Cookie.setObject(new CookieObject(this.key, this.value = newValue));

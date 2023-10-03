@@ -56,7 +56,11 @@ Cookie.listeners = [];
 export class CookieObject {
     constructor(key, value) {
         this.key = key;
-        this.value = value;
+        this._value = value;
+    }
+    get value() { return this._value; }
+    set value(newValue) {
+        this.setValue(newValue);
     }
     setValue(newValue) {
         Cookie.setObject(new CookieObject(this.key, this.value = newValue));
