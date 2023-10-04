@@ -22,7 +22,7 @@ const theme = Cookie.getObjectByKeyWithNullSafe<string>("theme", "device");
 const cookies: CookieObject<any>[] = Cookie.objects;
 ```
 
-## Set value of cookie object
+### Set value of cookie object
 The following describes how to define a value of cookie object.
 
 ```ts
