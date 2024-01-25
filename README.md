@@ -1,5 +1,6 @@
 # Web Cookie
 Ideally Implemented simple web client-cookie source code, and using Typescript.
+`Cookies are rarely controlled directly by the client.`
 
 > The example doesn't work in the local environment.
 
