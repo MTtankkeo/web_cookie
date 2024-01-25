@@ -10,12 +10,12 @@ The following describes how to get a instance of cookie object.
 
 ```ts
 // Not Null-Safety
-const theme = Cookie.getObjectByKey<string>("theme");
+const version = Cookie.getObjectByKey<string>("version");
 ```
 
 ```ts
 // Null-Safety
-const theme = Cookie.getObjectByKeyWithNullSafe<string>("theme", "device");
+const version = Cookie.getObjectByKeyWithNullSafe<string>("version", "1.0.0");
 ```
 
 ```ts
@@ -27,10 +27,10 @@ The following describes how to define a value of cookie object.
 
 ```ts
 // Useing setter
-theme.value = "device";
+version.value = "1.0.0";
 
 // Useing function.
-theme.setValue("device");
+version.setValue("1.0.0");
 ```
 
 ## Listener
@@ -39,7 +39,7 @@ The following describes how to register a callback function that is called whene
 ### globally register listener
 ```ts
 Cookie.addListener<string>({
-      key: "theme",
+      key: "version",
       listener(value: string) {
           console.log(`Update to ${value}`);
       },
@@ -48,9 +48,9 @@ Cookie.addListener<string>({
 
 ### Register listener by instance
 ```ts
-const theme = Cookie.getObjectByKeyWithNullSafe("theme", "device");
+const version = Cookie.getObjectByKeyWithNullSafe("version", "1.0.0");
 
-theme.addListener(value => {
+version.addListener(value => {
     console.log(`Update to ${value}`);
 });
 ```
